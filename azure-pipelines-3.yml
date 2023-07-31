@@ -65,7 +65,7 @@ stages:
               action: createSecret
               secretName: $(imagePullSecret)
               dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
-              kubernetesServiceConnection: 'aks-shared-bermtec-test123'
+              kubernetesServiceConnection: 'k8s-berm'
 
           - task: KubernetesManifest@0
             displayName: Deploy to Kubernetes cluster
@@ -78,5 +78,5 @@ stages:
                 $(imagePullSecret)
               containers: |
                 $(containerRegistry)/$(imageRepository):$(tag)
-              kubernetesServiceConnection: 'aks-shared-bermtec-test123'
+              kubernetesServiceConnection: 'k8s-berm'
 
