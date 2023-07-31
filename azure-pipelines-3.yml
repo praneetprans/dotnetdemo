@@ -53,7 +53,7 @@ stages:
     displayName: Deploy
     pool:
       vmImage: $(vmImageName)
-    environment: 'Raghupatikdotnetdemo-4331.test123'
+    environment: 'Dev'
     strategy:
       runOnce:
         deploy:
