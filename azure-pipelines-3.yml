@@ -17,7 +17,7 @@ variables:
   dockerfilePath: '**/Dockerfile'
   tag: '$(Build.BuildId)'
   imagePullSecret: 'bermacr1cd9-auth'
-  namespace: 'test123'
+  namespace: 'walmartdev'
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
