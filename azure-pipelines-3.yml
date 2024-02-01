@@ -23,12 +23,12 @@ steps:
     publishWebProjects: false
     zipAfterPublish: true
     projects: '**/*.csproj'
-    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory) --no-restore'
+    arguments: '--output $(Build.ArtifactStagingDirectory)'
 
-# Publish artifacts after job finished within pipeline
+# Publish artifacts after job finished within pipelin
+
 - task: PublishPipelineArtifact@1
-  displayName: Publish pipeline artifacts
   inputs:
-    targetPath: '$(Build.ArtifactStagingDirectory)'
-    artifactName: 'test'
+    targetPath: '$(Pipeline.Workspace)'
+    artifact: 'test'
     publishLocation: 'pipeline'
