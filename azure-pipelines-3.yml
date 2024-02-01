@@ -15,3 +15,20 @@ variables:
 steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
+
+- task: DotNetCoreCLI@2
+  displayName: Publish
+  inputs:
+    command: publish
+    publishWebProjects: false
+    zipAfterPublish: true
+    projects: '**/*.csproj'
+    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory) --no-restore'
+
+# Publish artifacts after job finished within pipeline
+- task: PublishPipelineArtifact@1
+  displayName: Publish pipeline artifacts
+  inputs:
+    targetPath: '$(Build.ArtifactStagingDirectory)'
+    artifactName: 'test'
+    publishLocation: 'pipeline'
